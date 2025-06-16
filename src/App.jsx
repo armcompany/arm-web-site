@@ -949,7 +949,7 @@ function App() {
             >
               <div className="w-24 h-24 rounded-full bg-primary p-2 shadow-lg flex items-center justify-center">
                 <img
-                  src="/src/assets/logoarm.png"
+                  src="/logo.png"
                   alt="Logo"
                   className="w-full h-full object-contain rounded-full"
                   loading="lazy"
