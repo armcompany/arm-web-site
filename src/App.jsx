@@ -831,7 +831,7 @@ function App() {
                         Endereço
                       </div>
                       <div className="text-sm text-foreground font-medium leading-relaxed">
-                        Rua André de Barros, 226, SL 609 – Centro
+                        Rua Luiz Boza, 488, Santa Felicidade
                         <br />
                         CEP 80010-080 – Curitiba/PR, Brasil
                       </div>

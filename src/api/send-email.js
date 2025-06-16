@@ -120,8 +120,8 @@ export default async function handler(req, res) {
             </div>
             
             <div style="margin-top: 20px; text-align: center; color: #6c757d; font-size: 14px;">
-              <p>📍 Rua André de Barros, 226, SL 609 – Centro, Curitiba/PR</p>
-              <p>📞 +55 (41) 99815-7368 | ✉️ armbuildscompany@gmail.com</p>
+              <p>📍 Rua Luiz Boza, 488, Santa Felicidade, Curitiba/PR</p>
+              <p>📞 +55 (41) 99815-7368 | ✉️ contato@armbuilds.com</p>
             </div>
           </div>
         </div>
