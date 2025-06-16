@@ -7,8 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card.jsx";
-import { Input } from "@/components/ui/input.jsx";
-import { Textarea } from "@/components/ui/textarea.jsx";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -30,6 +28,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import "./App.css";
+import { ContactForm } from "./components/form/contact-forms";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -764,54 +763,7 @@ function App() {
 
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <Card className="bg-card border-border backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="text-foreground text-2xl">
-                    Envie uma Mensagem
-                  </CardTitle>
-                  <CardDescription className="text-muted-foreground">
-                    Preencha o formulário e entraremos em contato em breve
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <Input
-                      placeholder="Nome"
-                      className="bg-input border-border text-foreground placeholder:text-muted-foreground"
-                    />
-                    <Input
-                      placeholder="E-mail"
-                      type="email"
-                      className="bg-input border-border text-foreground placeholder:text-muted-foreground"
-                    />
-                  </div>
-                  <Input
-                    placeholder="Assunto"
-                    className="bg-input border-border text-foreground placeholder:text-muted-foreground"
-                  />
-                  <Textarea
-                    placeholder="Sua mensagem..."
-                    rows={5}
-                    className="bg-input border-border text-foreground placeholder:text-muted-foreground"
-                  />
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                      Enviar Mensagem
-                      <ArrowRight className="ml-2" size={16} />
-                    </Button>
-                  </motion.div>
-                </CardContent>
-              </Card>
-            </motion.div>
+            {ContactForm()}
 
             {/* Contact Info */}
             <motion.div
@@ -845,7 +797,7 @@ function App() {
                         E-mail
                       </div>
                       <div className="text-muted-foreground">
-                        contato@armbuilds.com
+                        armbuildscompany@gmail.com
                       </div>
                     </div>
                   </motion.div>
