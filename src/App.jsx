@@ -26,7 +26,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { ContactForm } from "./components/form/contact-forms";
 
@@ -36,6 +36,30 @@ function App() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(() => {
+    const handleNavClick = (e) => {
+      const link = e.target.closest('a[href^="#"]');
+      if (link) {
+        e.preventDefault();
+        const targetId = link.getAttribute("href").substring(1);
+        const element = document.getElementById(targetId);
+
+        if (element) {
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - 80;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
+      }
+    };
+
+    document.addEventListener("click", handleNavClick);
+    return () => document.removeEventListener("click", handleNavClick);
+  }, []);
 
   // Variantes de animação para diferentes elementos
   const fadeInUp = {
