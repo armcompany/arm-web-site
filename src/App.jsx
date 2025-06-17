@@ -538,7 +538,8 @@ function App() {
                     100%
                   </motion.div>
                   <div className="text-muted-foreground">
-                    Satisfação do Cliente
+                    Projetos dinâmicos e transparentes descomplicando os
+                    processos
                   </div>
                 </motion.div>
               </motion.div>
