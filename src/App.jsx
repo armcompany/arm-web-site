@@ -535,7 +535,7 @@ function App() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                   >
-                    98%
+                    100%
                   </motion.div>
                   <div className="text-muted-foreground">
                     Satisfação do Cliente
