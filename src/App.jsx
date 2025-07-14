@@ -226,12 +226,12 @@ function App() {
             >
               Arm Builds Company
               <motion.span
-                className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
+                className="block text-4xl text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-700"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                Inovação em IA e Web3
+                Inovação em IA, Web3 e Super Apps
               </motion.span>
             </motion.h1>
             <motion.p
@@ -257,7 +257,7 @@ function App() {
                   size="lg"
                   className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3"
                 >
-                  Descubra Nossas Soluções Web3 e de IA
+                  Descubra Nossas Soluções Mobile, Web3 e de IA
                   <ArrowRight className="ml-2" size={20} />
                 </Button>
               </motion.div>
