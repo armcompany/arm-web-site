@@ -12,8 +12,6 @@ import {
   ArrowRight,
   Brain,
   CheckCircle,
-  Github,
-  Linkedin,
   Mail,
   MapPin,
   Menu,
@@ -21,7 +19,6 @@ import {
   Shield,
   Smartphone,
   TrendingUp,
-  Twitter,
   Users,
   X,
   Zap,
@@ -865,7 +862,7 @@ function App() {
                 </motion.div>
               </div>
 
-              <div>
+              {/* <div>
                 <h3 className="text-xl font-bold text-foreground mb-4">
                   Siga-nos
                 </h3>
@@ -901,7 +898,7 @@ function App() {
                     <Github className="text-foreground" size={20} />
                   </motion.a>
                 </motion.div>
-              </div>
+              </div> */}
             </motion.div>
           </div>
         </div>
