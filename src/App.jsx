@@ -858,7 +858,7 @@ function App() {
                       <div className="text-sm text-foreground font-medium leading-relaxed">
                         Rua Luiz Boza, 488, Santa Felicidade
                         <br />
-                        CEP 80010-080 – Curitiba/PR, Brasil
+                        CEP 82400-100 – Curitiba/PR, Brasil
                       </div>
                     </div>
                   </motion.div>
