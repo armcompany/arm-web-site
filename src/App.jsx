@@ -882,11 +882,9 @@ function App() {
                       </span>
                     </p>
                     <p>
-                      <span className="font-medium text-foreground">
-                        Site:
-                      </span>{" "}
+                      <span className="font-medium text-foreground">Site:</span>{" "}
                       <a
-                        href="https://lyndus.com"
+                        href="https://lyndus.com.br"
                         target="_blank"
                         rel="noreferrer"
                         className="text-accent-foreground underline underline-offset-2 hover:text-primary"
@@ -935,9 +933,7 @@ function App() {
                       </span>
                     </p>
                     <p>
-                      <span className="font-medium text-foreground">
-                        Foco:
-                      </span>{" "}
+                      <span className="font-medium text-foreground">Foco:</span>{" "}
                       <span className="text-accent-foreground">
                         IA em tempo real
                       </span>
