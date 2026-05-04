@@ -1050,8 +1050,13 @@ function App() {
                       </div>
                     </div>
                   </motion.a>
-                  <motion.div
-                    className="flex items-center space-x-4"
+                  <motion.a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                      "Rua Grã Nicco 113, Mossunguê, Curitiba - PR, 82400-100",
+                    )}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center space-x-4 group"
                     variants={fadeInRight}
                     whileHover={{ x: 10 }}
                   >
@@ -1059,16 +1064,19 @@ function App() {
                       <MapPin className="text-primary-foreground" size={20} />
                     </div>
                     <div>
-                      <div className="text-foreground font-semibold">
+                      <div className="text-foreground font-semibold group-hover:text-primary transition-colors">
                         Endereço
                       </div>
-                      <div className="text-sm text-foreground font-medium leading-relaxed">
+                      <div className="text-sm text-foreground font-medium leading-relaxed group-hover:underline underline-offset-2">
                         Rua Grã Nicco 113, Mossunguê, Bloco 3 Sl 101
                         <br />
                         CEP 82400-100 – Curitiba/PR, Brasil
                       </div>
+                      <div className="text-xs text-muted-foreground mt-1">
+                        Abrir no Google Maps
+                      </div>
                     </div>
-                  </motion.div>
+                  </motion.a>
                 </motion.div>
               </div>
 
