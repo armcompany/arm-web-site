@@ -1050,33 +1050,47 @@ function App() {
                       </div>
                     </div>
                   </motion.a>
-                  <motion.a
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                      "Rua Grã Nicco 113, Mossunguê, Curitiba - PR, 82400-100",
-                    )}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center space-x-4 group"
+                  <motion.div
+                    className="flex items-start space-x-4"
                     variants={fadeInRight}
                     whileHover={{ x: 10 }}
                   >
-                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center shrink-0">
                       <MapPin className="text-primary-foreground" size={20} />
                     </div>
                     <div>
-                      <div className="text-foreground font-semibold group-hover:text-primary transition-colors">
+                      <div className="text-foreground font-semibold">
                         Endereço
                       </div>
-                      <div className="text-sm text-foreground font-medium leading-relaxed group-hover:underline underline-offset-2">
+                      <div className="text-sm text-foreground font-medium leading-relaxed">
                         Rua Grã Nicco 113, Mossunguê, Bloco 3 Sl 101
                         <br />
                         CEP 82400-100 – Curitiba/PR, Brasil
                       </div>
-                      <div className="text-xs text-muted-foreground mt-1">
-                        Abrir no Google Maps
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        <a
+                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                            "Rua Grã Nicco 113, Mossunguê, Curitiba - PR, 82400-100",
+                          )}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center rounded-md border border-border bg-card px-3 py-1 text-xs font-medium text-foreground hover:bg-foreground hover:text-background transition-colors"
+                        >
+                          Abrir no Google Maps
+                        </a>
+                        <a
+                          href={`https://waze.com/ul?q=${encodeURIComponent(
+                            "Rua Grã Nicco 113, Mossunguê, Curitiba - PR, 82400-100",
+                          )}&navigate=yes`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center rounded-md border border-border bg-card px-3 py-1 text-xs font-medium text-foreground hover:bg-foreground hover:text-background transition-colors"
+                        >
+                          Abrir no Waze
+                        </a>
                       </div>
                     </div>
-                  </motion.a>
+                  </motion.div>
                 </motion.div>
               </div>
 
