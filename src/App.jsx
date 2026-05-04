@@ -15,6 +15,7 @@ import {
   Mail,
   MapPin,
   Menu,
+  MessageCircle,
   Phone,
   Shield,
   Smartphone,
@@ -29,6 +30,16 @@ import { ContactForm } from "./components/form/contact-forms";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const contactEmail =
+    import.meta.env.VITE_CONTACT_EMAIL || "contato@armbuilds.com";
+  const contactPhone =
+    import.meta.env.VITE_CONTACT_PHONE || "+55 (41) 99815-7368";
+  const whatsappNumber =
+    import.meta.env.VITE_CONTACT_WHATSAPP_NUMBER || "5541998157368";
+  const whatsappMessage =
+    import.meta.env.VITE_CONTACT_WHATSAPP_MESSAGE ||
+    "Olá! Vim pelo site da Arm Builds e gostaria de conversar sobre um projeto.";
+  const whatsappHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -113,7 +124,7 @@ function App() {
             >
               <div className="w-14 h-14flex items-center justify-center">
                 <span className="text-primary text-2xl font-extrabold tracking-tight drop-shadow-md">
-                  Arm Builds Co.
+                  Arm Development.
                 </span>
               </div>
             </motion.div>
@@ -224,7 +235,7 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Arm Builds Company
+              Arm Co. Development
               <motion.span
                 className="block text-4xl text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-700"
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -240,8 +251,7 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
             >
-              Fluxos seguros, ideias autônomas, estruturas que se constroem
-              sozinhas.
+              Fluxos seguros, ideias autônomas, arquiteturas AI First.
             </motion.p>
             <motion.div
               className="flex flex-col sm:flex-row gap-4 justify-center"
@@ -302,7 +312,7 @@ function App() {
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-3 gap-8"
+            className="grid md:grid-cols-2 xl:grid-cols-4 gap-8"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
@@ -437,17 +447,17 @@ function App() {
                     <Shield className="text-primary-foreground" size={24} />
                   </motion.div>
                   <CardTitle className="text-foreground text-2xl">
-                    Sistemas Web3 Descentralizados
+                    Infraestrutura Blockchain para o Mercado Real
                   </CardTitle>
                   <CardDescription className="text-muted-foreground">
-                    O Futuro da Internet ao Seu Alcance
+                    Tecnologia que Conecta Ativos, Dados e Energia
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="text-muted-foreground relative z-10">
                   <p className="mb-4">
-                    Abrace o futuro da internet com a segurança e transparência
-                    da tecnologia blockchain. Construímos sistemas Web3
-                    descentralizados.
+                    Construímos a camada de software por trás de operações
+                    tokenizadas, dados verificáveis via IoT e infraestrutura
+                    inteligente para o mercado financeiro e energético.
                   </p>
                   <ul className="space-y-2">
                     <li className="flex items-center">
@@ -455,21 +465,91 @@ function App() {
                         className="text-accent-foreground mr-2"
                         size={16}
                       />
-                      Desenvolvimento de DApps
+                      Plataformas White-Label de Tokenização
                     </li>
                     <li className="flex items-center">
                       <CheckCircle
                         className="text-accent-foreground mr-2"
                         size={16}
                       />
-                      Soluções de NFT
+                      Smart Contracts & Auditoria
                     </li>
                     <li className="flex items-center">
                       <CheckCircle
                         className="text-accent-foreground mr-2"
                         size={16}
                       />
-                      Finanças Descentralizadas (DeFi)
+                      Integração IoT com Registro On-Chain
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle
+                        className="text-accent-foreground mr-2"
+                        size={16}
+                      />
+                      Monitoramento Energético para IA
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle
+                        className="text-accent-foreground mr-2"
+                        size={16}
+                      />
+                      Compliance e Infraestrutura DeFi
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* LLMs e RAG */}
+            <motion.div variants={fadeInUp} whileHover="hover">
+              <Card className="bg-card border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden">
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                ></motion.div>
+                <CardHeader className="relative z-10">
+                  <motion.div
+                    className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Zap className="text-primary-foreground" size={24} />
+                  </motion.div>
+                  <CardTitle className="text-foreground text-2xl">
+                    LLMs e Esteiras de IA
+                  </CardTitle>
+                  <CardDescription className="text-muted-foreground">
+                    Orquestração, contexto e segurança para aplicações com IA
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="text-muted-foreground relative z-10">
+                  <p className="mb-4">
+                    Projetamos esteiras de LLMs com LangChain, RAG e deploys
+                    automatizados, conectando bases como vaults.fyi com foco em
+                    observabilidade, segurança da informação e escala.
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-center">
+                      <CheckCircle
+                        className="text-accent-foreground mr-2"
+                        size={16}
+                      />
+                      LLMs, prompts e chains com LangChain
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle
+                        className="text-accent-foreground mr-2"
+                        size={16}
+                      />
+                      RAG com bases privadas e integrações como vaults.fyi
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle
+                        className="text-accent-foreground mr-2"
+                        size={16}
+                      />
+                      Deploy automatizado, guardrails e segurança da informação
                     </li>
                   </ul>
                 </CardContent>
@@ -490,17 +570,17 @@ function App() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Sobre a Arm Builds Company
+                Sobre a Arm Company Development
               </h2>
               <p className="text-xl text-muted-foreground mb-6 leading-relaxed">
-                Na Arm Builds Company, nossa missão é impulsionar a inovação e a
-                transformação digital, fornecendo soluções tecnológicas de ponta
-                que capacitam nossos clientes a alcançar seus objetivos.
+                Na Arm, nossa missão é impulsionar a inovação e a transformação
+                digital, fornecendo soluções tecnológicas de ponta que capacitam
+                nossos clientes a alcançar seus objetivos.
               </p>
               <p className="text-lg text-muted-foreground mb-8">
                 Somos um time multidisciplinar de engenheiros, desenvolvedores,
                 designers e estrategistas apaixonados por tecnologia e inovação,
-                com vasta experiência em inteligência artificial,
+                com grande experiência em inteligência artificial,
                 desenvolvimento de software e blockchain.
               </p>
               <motion.div
@@ -518,7 +598,7 @@ function App() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                    50+
+                    20+
                   </motion.div>
                   <div className="text-muted-foreground">
                     Projetos Concluídos
@@ -641,89 +721,13 @@ function App() {
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-3 gap-8"
+            className="grid md:grid-cols-2 xl:grid-cols-4 gap-8"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
           >
-            {/* Case Study 1 */}
-            <motion.div variants={fadeInUp} whileHover="hover">
-              <Card className="bg-card border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden">
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                ></motion.div>
-                <CardHeader className="relative z-10">
-                  <Badge className="w-fit bg-primary/20 text-primary border-primary/30">
-                    Agente Vertical
-                  </Badge>
-                  <CardTitle className="text-foreground text-xl">
-                    E-commerce Inteligente
-                  </CardTitle>
-                  <CardDescription className="text-muted-foreground">
-                    Otimização de atendimento ao cliente com IA
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="text-muted-foreground relative z-10">
-                  <p className="mb-4">
-                    Desenvolvemos um agente vertical de IA que reduziu em 60% o
-                    tempo de resposta e aumentou em 40% a satisfação do cliente.
-                  </p>
-                  <div className="space-y-2">
-                    <div className="flex justify-between">
-                      <span>Tempo de Resposta</span>
-                      <span className="text-accent-foreground">-60%</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Satisfação do Cliente</span>
-                      <span className="text-accent-foreground">+40%</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Case Study 2 */}
-            <motion.div variants={fadeInUp} whileHover="hover">
-              <Card className="bg-card border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden">
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                ></motion.div>
-                <CardHeader className="relative z-10">
-                  <Badge className="w-fit bg-secondary/20 text-secondary border-secondary/30">
-                    Web3
-                  </Badge>
-                  <CardTitle className="text-foreground text-xl">
-                    Galeria de Arte Digital
-                  </CardTitle>
-                  <CardDescription className="text-muted-foreground">
-                    Plataforma Web3 para NFTs e arte digital
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="text-muted-foreground relative z-10">
-                  <p className="mb-4">
-                    Criamos uma plataforma Web3 que estabeleceu a galeria como
-                    pioneira no mercado de arte digital com NFTs.
-                  </p>
-                  <div className="space-y-2">
-                    <div className="flex justify-between">
-                      <span>Pioneirismo</span>
-                      <span className="text-accent-foreground">✓ Líder</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Novas Receitas</span>
-                      <span className="text-accent-foreground">✓ NFTs</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Case Study 3 */}
+            {/* Elamor */}
             <motion.div variants={fadeInUp} whileHover="hover">
               <Card className="bg-card border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden">
                 <motion.div
@@ -736,26 +740,216 @@ function App() {
                     Aplicativo Mobile
                   </Badge>
                   <CardTitle className="text-foreground text-xl">
-                    App de Saúde e Bem-Estar
+                    Elamor
                   </CardTitle>
                   <CardDescription className="text-muted-foreground">
-                    Aplicativo com personalização inteligente
+                    Marketplace high-ticket de beleza e bem-estar
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="text-muted-foreground relative z-10">
                   <p className="mb-4">
-                    Desenvolvemos um aplicativo mobile com IA que oferece planos
-                    de bem-estar altamente personalizados.
+                    Plataforma mobile que conecta clientes aos melhores
+                    profissionais de beleza premium, com agendamento
+                    inteligente, pagamento integrado e curadoria de prestadores
+                    high-ticket.
                   </p>
                   <div className="space-y-2">
-                    <div className="flex justify-between">
-                      <span>Engajamento</span>
-                      <span className="text-accent-foreground">Alto</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Crescimento</span>
-                      <span className="text-accent-foreground">Rápido</span>
-                    </div>
+                    <p>
+                      <span className="font-medium text-foreground">
+                        Plataforma:
+                      </span>{" "}
+                      <span className="text-accent-foreground">
+                        React Native
+                      </span>
+                    </p>
+                    <p>
+                      <span className="font-medium text-foreground">
+                        Distribuição:
+                      </span>{" "}
+                      <span className="text-accent-foreground">
+                        iOS &amp; Android
+                      </span>
+                    </p>
+                    <p>
+                      <span className="font-medium text-foreground">Site:</span>{" "}
+                      <a
+                        href="https://elamor.com.br"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-accent-foreground underline underline-offset-2 hover:text-primary"
+                      >
+                        elamor.com.br
+                      </a>
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* ARMbidding */}
+            <motion.div variants={fadeInUp} whileHover="hover">
+              <Card className="bg-card border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden">
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                ></motion.div>
+                <CardHeader className="relative z-10">
+                  <Badge className="w-fit bg-primary/20 text-primary border-primary/30">
+                    Agente Vertical
+                  </Badge>
+                  <CardTitle className="text-foreground text-xl">
+                    InBidding
+                  </CardTitle>
+                  <CardDescription className="text-muted-foreground">
+                    Inteligência de licitações públicas em escala nacional
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="text-muted-foreground relative z-10">
+                  <p className="mb-4">
+                    Coleta e organiza todas as publicações de licitação do
+                    Brasil em um único painel. Modelos de IA treinam sobre o
+                    histórico para entregar os editais mais relevantes para cada
+                    filtro aplicado pelo usuário.
+                  </p>
+                  <div className="space-y-2">
+                    <p>
+                      <span className="font-medium text-foreground">
+                        Cobertura:
+                      </span>{" "}
+                      <span className="text-accent-foreground">Nacional</span>
+                    </p>
+                    <p>
+                      <span className="font-medium text-foreground">
+                        Stack:
+                      </span>{" "}
+                      <span className="text-accent-foreground">IA + RAG</span>
+                    </p>
+                    <p>
+                      <span className="font-medium text-foreground">
+                        Output:
+                      </span>{" "}
+                      <span className="text-accent-foreground">
+                        Editais ranqueados
+                      </span>
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Lyndus */}
+            <motion.div variants={fadeInUp} whileHover="hover">
+              <Card className="bg-card border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden">
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                ></motion.div>
+                <CardHeader className="relative z-10">
+                  <Badge className="w-fit bg-secondary/20 text-secondary border-secondary/30">
+                    Fintech
+                  </Badge>
+                  <CardTitle className="text-foreground text-xl">
+                    Lyndus
+                  </CardTitle>
+                  <CardDescription className="text-muted-foreground">
+                    Ecossistema fintech para autônomos e patrocinadores
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="text-muted-foreground relative z-10">
+                  <p className="mb-4">
+                    Aplicativo e infraestrutura financeira que conecta clientes,
+                    usuários, patrocinadores e profissionais autônomos. Permite
+                    antecipação de pagamentos com base no rendimento real de
+                    cada autônomo dentro da plataforma.
+                  </p>
+                  <div className="space-y-2">
+                    <p>
+                      <span className="font-medium text-foreground">
+                        Modelo:
+                      </span>{" "}
+                      <span className="text-accent-foreground">
+                        App + Fintech
+                      </span>
+                    </p>
+                    <p>
+                      <span className="font-medium text-foreground">
+                        Diferencial:
+                      </span>{" "}
+                      <span className="text-accent-foreground">
+                        Antecipação inteligente
+                      </span>
+                    </p>
+                    <p>
+                      <span className="font-medium text-foreground">
+                        Site:
+                      </span>{" "}
+                      <a
+                        href="https://lyndus.com"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-accent-foreground underline underline-offset-2 hover:text-primary"
+                      >
+                        lyndus.com
+                      </a>
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* LiveWave */}
+            <motion.div variants={fadeInUp} whileHover="hover">
+              <Card className="bg-card border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden">
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                ></motion.div>
+                <CardHeader className="relative z-10">
+                  <Badge className="w-fit bg-primary/20 text-primary border-primary/30">
+                    Em Desenvolvimento
+                  </Badge>
+                  <CardTitle className="text-foreground text-xl">
+                    LiveWave
+                  </CardTitle>
+                  <CardDescription className="text-muted-foreground">
+                    Copiloto multilíngue de IA para reuniões e entrevistas
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="text-muted-foreground relative z-10">
+                  <p className="mb-4">
+                    Um copiloto em tempo real que unifica qualquer idioma
+                    durante reuniões, eliminando a barreira da linguagem e o
+                    nervosismo em entrevistas. Tradução, contexto e sugestões
+                    instantâneas direto na call.
+                  </p>
+                  <div className="space-y-2">
+                    <p>
+                      <span className="font-medium text-foreground">
+                        Status:
+                      </span>{" "}
+                      <span className="text-accent-foreground">
+                        Em andamento
+                      </span>
+                    </p>
+                    <p>
+                      <span className="font-medium text-foreground">
+                        Foco:
+                      </span>{" "}
+                      <span className="text-accent-foreground">
+                        IA em tempo real
+                      </span>
+                    </p>
+                    <p>
+                      <span className="font-medium text-foreground">
+                        Aplicação:
+                      </span>{" "}
+                      <span className="text-accent-foreground">
+                        Reuniões &amp; entrevistas
+                      </span>
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -785,7 +979,7 @@ function App() {
 
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Form */}
-            {ContactForm()}
+            <ContactForm />
 
             {/* Contact Info */}
             <motion.div
@@ -819,7 +1013,7 @@ function App() {
                         E-mail
                       </div>
                       <div className="text-muted-foreground">
-                        armbuildscompany@gmail.com
+                        {contactEmail}
                       </div>
                     </div>
                   </motion.div>
@@ -836,10 +1030,30 @@ function App() {
                         Telefone
                       </div>
                       <div className="text-muted-foreground">
-                        +55 (41) 99815-7368
+                        {contactPhone}
                       </div>
                     </div>
                   </motion.div>
+                  <motion.a
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center space-x-4 rounded-xl border border-foreground bg-background p-4 transition-colors hover:bg-foreground hover:text-background"
+                    variants={fadeInRight}
+                    whileHover={{ x: 10 }}
+                  >
+                    <div className="w-12 h-12 rounded-lg bg-foreground flex items-center justify-start">
+                      <MessageCircle className="text-background" size={20} />
+                    </div>
+                    <div>
+                      <div className="text-foreground font-semibold">
+                        WhatsApp
+                      </div>
+                      <div className="text-muted-foreground">
+                        Conversar agora
+                      </div>
+                    </div>
+                  </motion.a>
                   <motion.div
                     className="flex items-center space-x-4"
                     variants={fadeInRight}
@@ -853,7 +1067,7 @@ function App() {
                         Endereço
                       </div>
                       <div className="text-sm text-foreground font-medium leading-relaxed">
-                        Rua Luiz Boza, 488, Santa Felicidade
+                        Rua Grã Nicco 113, Mossunguê, Bloco 3 Sl 101
                         <br />
                         CEP 82400-100 – Curitiba/PR, Brasil
                       </div>
@@ -938,7 +1152,7 @@ function App() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              © 2025 Arm Builds Company. Todos os direitos reservados.
+              © 2025 Arm Company Development. Todos os direitos reservados.
             </motion.div>
           </div>
         </div>
