@@ -889,7 +889,7 @@ function App() {
                         rel="noreferrer"
                         className="text-accent-foreground underline underline-offset-2 hover:text-primary"
                       >
-                        lyndus.com
+                        lyndus.com.br
                       </a>
                     </p>
                   </div>
