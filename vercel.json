@@ -21,11 +21,11 @@
   "rewrites": [
     {
       "source": "/importing",
-      "destination": "https://landpage-armimports.vercel.app"
+      "destination": "https://landpage-armimports.vercel.app/importing"
     },
     {
       "source": "/importing/:path*",
-      "destination": "https://landpage-armimports.vercel.app/:path*"
+      "destination": "https://landpage-armimports.vercel.app/importing/:path*"
     }
   ]
 }
