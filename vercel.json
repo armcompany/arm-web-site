@@ -22,10 +22,6 @@
     {
       "source": "/importing",
       "destination": "https://landpage-armimports.vercel.app"
-    },
-    {
-      "source": "/importing/:path*",
-      "destination": "https://landpage-armimports.vercel.app/:path*"
     }
   ]
 }
