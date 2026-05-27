@@ -8,7 +8,7 @@
           "value": "*"
         },
         {
-          "key": "Access-Control-Allow-Methods", 
+          "key": "Access-Control-Allow-Methods",
           "value": "GET, POST, PUT, DELETE, OPTIONS"
         },
         {
@@ -16,6 +16,16 @@
           "value": "Content-Type, Authorization"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/importing",
+      "destination": "https://landpage-armimports.vercel.app"
+    },
+    {
+      "source": "/importing/:path*",
+      "destination": "https://landpage-armimports.vercel.app/:path*"
     }
   ]
 }
