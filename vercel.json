@@ -18,14 +18,11 @@
       ]
     }
   ],
-  "rewrites": [
+  "redirects": [
     {
       "source": "/importing",
-      "destination": "https://landpage-armimports.vercel.app/importing"
-    },
-    {
-      "source": "/importing/:path*",
-      "destination": "https://landpage-armimports.vercel.app/importing/:path*"
+      "destination": "/importing/",
+      "permanent": true
     }
   ]
 }
