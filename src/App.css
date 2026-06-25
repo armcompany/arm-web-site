@@ -1,27 +1,33 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
 @import "tailwindcss";
 
+/* ARM brand identity — monochrome, Ink by default.
+   Ink #0A0A0A · Paper #FFF · Graphite #6B6B69 · Ash #9A9A98 · Mist #E2E2E0 · Fog #F6F5F3 */
 :root {
-  --background: #ffffff;
-  --foreground: #000000;
-  --card: #f8f9fa;
-  --card-foreground: #000000;
-  --popover: #ffffff;
-  --popover-foreground: #000000;
-  --primary: #1a2b40;
-  --primary-foreground: #ffffff;
-  --secondary: #6c757d;
-  --secondary-foreground: #ffffff;
-  --muted: #f8f9fa;
-  --muted-foreground: #6c757d;
-  --accent: #e9ecef;
-  --accent-foreground: #1a2b40;
-  --destructive: #dc3545;
+  --background: #0a0a0a;
+  --foreground: #f6f5f3;
+  --card: #121214;
+  --card-foreground: #f6f5f3;
+  --popover: #0a0a0a;
+  --popover-foreground: #f6f5f3;
+  --primary: #f6f5f3;
+  --primary-foreground: #0a0a0a;
+  --secondary: #9a9a98;
+  --secondary-foreground: #0a0a0a;
+  --muted: #161618;
+  --muted-foreground: #9a9a98;
+  --accent: #1d1d20;
+  --accent-foreground: #f6f5f3;
+  --destructive: #c0392b;
   --destructive-foreground: #ffffff;
-  --border: #dee2e6;
-  --input: #ffffff;
-  --ring: #1a2b40;
+  --border: rgba(246, 245, 243, 0.1);
+  --input: #161618;
+  --ring: #9a9a98;
   --radius: 0.5rem;
+
+  --font-display: "Archivo", sans-serif;
+  --font-body: "Space Grotesk", sans-serif;
+  --font-mono: "Space Mono", monospace;
 }
 
 * {
@@ -31,7 +37,23 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-body);
+}
+
+/* Brand type roles */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+.brand-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
 }
 
 /* Animações customizadas para os cards */

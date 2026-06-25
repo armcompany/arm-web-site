@@ -27,6 +27,9 @@ import {
 import { useEffect, useState } from "react";
 import "./App.css";
 import { ContactForm } from "./components/form/contact-forms";
+import { ShaderBackground } from "@/components/ui/shader-background.jsx";
+import { DottedSurface } from "@/components/ui/dotted-surface.jsx";
+import { DeltaCube } from "@/components/ui/delta-cube.jsx";
 
 const GoogleMapsIcon = ({ size = 20, ...props }) => (
   <svg
@@ -106,12 +109,6 @@ function App() {
     transition: { duration: 0.6 },
   };
 
-  const fadeInLeft = {
-    initial: { opacity: 0, x: -60 },
-    animate: { opacity: 1, x: 0 },
-    transition: { duration: 0.6 },
-  };
-
   const fadeInRight = {
     initial: { opacity: 0, x: 60 },
     animate: { opacity: 1, x: 0 },
@@ -126,14 +123,6 @@ function App() {
     },
   };
 
-  const cardHover = {
-    hover: {
-      scale: 1.03, // Levemente menor para não ser exagerado
-      y: -5, // Move o card um pouco para cima
-      boxShadow: "0 10px 20px rgba(0,0,0,0.1)", // Sombra mais pronunciada
-      transition: { duration: 0.3 },
-    },
-  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -152,11 +141,17 @@ function App() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="w-14 h-14flex items-center justify-center">
-                <span className="text-primary text-2xl font-extrabold tracking-tight drop-shadow-md">
-                  Arm Development.
-                </span>
-              </div>
+              <a href="#home" className="flex items-center gap-3">
+                <DeltaCube size={34} stroke="var(--foreground)" />
+                <div className="flex flex-col leading-none">
+                  <span className="font-display text-2xl font-black tracking-tight">
+                    ARM
+                  </span>
+                  <span className="brand-label mt-1 text-[0.55rem]">
+                    Advanced Resource Mgmt
+                  </span>
+                </div>
+              </a>
             </motion.div>
 
             {/* Desktop Navigation */}
@@ -256,23 +251,47 @@ function App() {
       </motion.header>
 
       {/* Hero Section */}
-      <section id="home" className="pt-34 pb-16 px-4">
+      <section
+        id="home"
+        className="relative isolate overflow-hidden pt-34 pb-16 px-4 min-h-[100svh] flex items-center"
+      >
+        {/* Animated WebGL shader field — ARM monochrome "anomalous matter" */}
+        <div className="absolute inset-0 -z-10">
+          <ShaderBackground className="absolute inset-0" />
+          {/* fade the shader into Ink at the top (under the header) and bottom,
+              keeping the centre band bright behind the wordmark */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,var(--background)_100%)]" />
+          {/* soft scrim directly behind the centred type for legibility */}
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-72 bg-background/35 blur-3xl" />
+        </div>
+
         <div className="container mx-auto text-center">
           <div className="max-w-4xl mx-auto">
+            <motion.div
+              className="brand-label mb-6 flex items-center justify-center gap-3"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="h-px w-8 bg-border" />
+              Full-Cycle Engineering · AI · Web3
+              <span className="h-px w-8 bg-border" />
+            </motion.div>
             <motion.h1
-              className="text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight"
+              className="font-display text-6xl md:text-8xl font-black text-foreground mb-6 leading-[0.92]"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Arm Co. Development
+              We build systems
               <motion.span
-                className="block text-4xl text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-700"
-                initial={{ opacity: 0, scale: 0.8 }}
+                className="block bg-gradient-to-r from-foreground via-secondary to-foreground bg-clip-text text-transparent"
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                Inovação em IA, Web3 e Super Apps
+                end-to-end
               </motion.span>
             </motion.h1>
             <motion.p
@@ -281,7 +300,8 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
             >
-              Fluxos seguros, ideias autônomas, arquiteturas AI First.
+              Da arquitetura à IA e à web descentralizada — engenharia
+              full-cycle, construída ponta a ponta com geometria exata.
             </motion.p>
             <motion.div
               className="flex flex-col sm:flex-row gap-4 justify-center"
@@ -332,7 +352,8 @@ function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <div className="brand-label mb-4">01 — Serviços</div>
+            <h2 className="font-display text-4xl md:text-5xl font-black text-foreground mb-4">
               Nossos Serviços
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -350,7 +371,7 @@ function App() {
           >
             {/* Agentes Verticais */}
             <motion.div variants={fadeInUp} whileHover="hover">
-              <Card className="bg-card border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden">
+              <Card className="bg-card/70 border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden hover:border-foreground/25 hover:bg-card">
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   initial={{ opacity: 0 }}
@@ -406,7 +427,7 @@ function App() {
 
             {/* Desenvolvimento de Aplicativos */}
             <motion.div variants={fadeInUp} whileHover="hover">
-              <Card className="bg-card border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden">
+              <Card className="bg-card/70 border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden hover:border-foreground/25 hover:bg-card">
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   initial={{ opacity: 0 }}
@@ -462,7 +483,7 @@ function App() {
 
             {/* Sistemas Web3 */}
             <motion.div variants={fadeInUp} whileHover="hover">
-              <Card className="bg-card border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden">
+              <Card className="bg-card/70 border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden hover:border-foreground/25 hover:bg-card">
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   initial={{ opacity: 0 }}
@@ -532,7 +553,7 @@ function App() {
 
             {/* LLMs e RAG */}
             <motion.div variants={fadeInUp} whileHover="hover">
-              <Card className="bg-card border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden">
+              <Card className="bg-card/70 border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden hover:border-foreground/25 hover:bg-card">
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   initial={{ opacity: 0 }}
@@ -590,7 +611,15 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 px-4 bg-card/20">
+      <section
+        id="about"
+        className="relative isolate overflow-hidden py-16 px-4 bg-card/20"
+      >
+        {/* Dotted wave field — raw WebGL gl.POINTS, ARM monochrome */}
+        <div className="pointer-events-none absolute inset-0 -z-10 opacity-50">
+          <DottedSurface className="absolute inset-0" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+        </div>
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -599,7 +628,8 @@ function App() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              <div className="brand-label mb-4">02 — Sobre</div>
+              <h2 className="font-display text-4xl md:text-5xl font-black text-foreground mb-6">
                 Sobre a Arm Company Development
               </h2>
               <p className="text-xl text-muted-foreground mb-6 leading-relaxed">
@@ -741,7 +771,8 @@ function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <div className="brand-label mb-4">03 — Portfólio</div>
+            <h2 className="font-display text-4xl md:text-5xl font-black text-foreground mb-4">
               Nosso Portfólio
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -759,7 +790,7 @@ function App() {
           >
             {/* Elamor */}
             <motion.div variants={fadeInUp} whileHover="hover">
-              <Card className="bg-card border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden">
+              <Card className="bg-card/70 border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden hover:border-foreground/25 hover:bg-card">
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   initial={{ opacity: 0 }}
@@ -818,7 +849,7 @@ function App() {
 
             {/* ARMbidding */}
             <motion.div variants={fadeInUp} whileHover="hover">
-              <Card className="bg-card border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden">
+              <Card className="bg-card/70 border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden hover:border-foreground/25 hover:bg-card">
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   initial={{ opacity: 0 }}
@@ -870,7 +901,7 @@ function App() {
 
             {/* Lyndus */}
             <motion.div variants={fadeInUp} whileHover="hover">
-              <Card className="bg-card border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden">
+              <Card className="bg-card/70 border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden hover:border-foreground/25 hover:bg-card">
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   initial={{ opacity: 0 }}
@@ -929,7 +960,7 @@ function App() {
 
             {/* LiveWave */}
             <motion.div variants={fadeInUp} whileHover="hover">
-              <Card className="bg-card border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden">
+              <Card className="bg-card/70 border-border backdrop-blur-sm transition-all duration-300 group h-full relative overflow-hidden hover:border-foreground/25 hover:bg-card">
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   initial={{ opacity: 0 }}
@@ -994,7 +1025,8 @@ function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <div className="brand-label mb-4">04 — Contato</div>
+            <h2 className="font-display text-4xl md:text-5xl font-black text-foreground mb-4">
               Entre em Contato
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -1187,15 +1219,15 @@ function App() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="w-24 h-24 rounded-full bg-primary p-2 shadow-lg flex items-center justify-center">
-                <img
-                  src="/logo.png"
-                  alt="Logo"
-                  className="w-full h-full object-contain rounded-full"
-                  loading="lazy"
-                />
+              <DeltaCube size={40} stroke="var(--foreground)" />
+              <div className="flex flex-col leading-none">
+                <span className="font-display text-foreground text-lg font-black">
+                  ARM
+                </span>
+                <span className="brand-label mt-1 text-[0.55rem]">
+                  Advanced Resource Management
+                </span>
               </div>
-              <span className="text-foreground font-bold">Arm Builds Co.</span>
             </motion.div>
             <motion.div
               className="text-muted-foreground text-sm"
