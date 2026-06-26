@@ -15,16 +15,26 @@ attribute vec2 a_grid;       // x in [-1,1], z in [-1,1]
 uniform float u_time;
 uniform float u_aspect;
 varying float v_bright;
+varying float v_accent;      // 1.0 → this dot is amber
+
+float hash21(vec2 p){
+  p = fract(p * vec2(123.34, 456.21));
+  p += dot(p, p + 45.32);
+  return fract(p.x * p.y);
+}
 
 void main(){
+  // ~15% of the dots are flagged as amber accents
+  v_accent = step(0.85, hash21(a_grid * 17.0 + 3.0));
+
   float x = a_grid.x;
   float z = a_grid.y;
 
   // travelling wave height
   float y =
-    0.10 * sin(x * 3.0 + u_time) +
-    0.10 * cos(z * 3.5 - u_time * 0.8) +
-    0.05 * sin((x + z) * 5.0 + u_time * 1.3);
+    0.14 * sin(x * 3.0 + u_time) +
+    0.14 * cos(z * 3.5 - u_time * 0.8) +
+    0.07 * sin((x + z) * 5.0 + u_time * 1.3);
 
   // tilt the plane around the X axis
   float a = 1.12;
@@ -38,28 +48,36 @@ void main(){
   float zc = d - zp;
   float proj = focal / zc;
 
-  float sx = (x * 1.6) * proj / u_aspect;
-  float sy = yp * proj * 1.15 + 0.12;
+  float sx = (x * 3.1) * proj / u_aspect;
+  float sy = yp * proj * 1.7 + 0.05;
 
   gl_Position = vec4(sx, sy, 0.0, 1.0);
-  gl_PointSize = clamp(4.2 * proj, 1.0, 6.0);
+  gl_PointSize = clamp(2.6 * proj, 0.8, 3.8);
 
   // brighter when near (large proj) and on wave peaks; fades into the distance
-  float depth = smoothstep(0.42, 0.72, proj);
-  v_bright = depth * (0.55 + 0.45 * smoothstep(-0.18, 0.18, y));
+  float depth = smoothstep(0.36, 0.74, proj);
+  v_bright = depth * (0.6 + 0.4 * smoothstep(-0.22, 0.22, y));
 }
 `;
 
 const FRAG = `
 precision mediump float;
 varying float v_bright;
+varying float v_accent;
 void main(){
   // round dots
   vec2 c = gl_PointCoord - 0.5;
   float r = dot(c, c);
   if (r > 0.25) discard;
   float edge = smoothstep(0.25, 0.05, r);
-  gl_FragColor = vec4(vec3(0.96, 0.96, 0.94), v_bright * edge);
+
+  vec3 paper = vec3(0.96, 0.96, 0.94);   // monochrome default
+  vec3 amber = vec3(0.95, 0.45, 0.13);   // amber-red accent
+  vec3 col = mix(paper, amber, v_accent);
+
+  // let the accents glow a touch brighter so they pop
+  float a = v_bright * edge * (1.0 + 0.35 * v_accent);
+  gl_FragColor = vec4(col, a);
 }
 `;
 

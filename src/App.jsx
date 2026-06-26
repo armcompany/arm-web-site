@@ -616,9 +616,9 @@ function App() {
         className="relative isolate overflow-hidden py-16 px-4 bg-card/20"
       >
         {/* Dotted wave field — raw WebGL gl.POINTS, ARM monochrome */}
-        <div className="pointer-events-none absolute inset-0 -z-10 opacity-50">
-          <DottedSurface className="absolute inset-0" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+        <div className="pointer-events-none absolute inset-0 -z-10 opacity-90">
+          <DottedSurface className="absolute inset-0" cols={184} rows={114} />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-background/80" />
         </div>
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
