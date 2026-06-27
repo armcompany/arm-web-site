@@ -255,6 +255,24 @@ body {
   opacity: 1;
 }
 
+/* Marquee de tecnologias — auto-scroll + arraste controlados via JS */
+.mask-gradient {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
