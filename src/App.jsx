@@ -27,6 +27,7 @@ import {
 import { useEffect, useState } from "react";
 import "./App.css";
 import { ContactForm } from "./components/form/contact-forms";
+import { TechMarquee } from "@/components/sections/tech-marquee.jsx";
 import { ShaderBackground } from "@/components/ui/shader-background.jsx";
 import { DottedSurface } from "@/components/ui/dotted-surface.jsx";
 import { DeltaCube } from "@/components/ui/delta-cube.jsx";
@@ -609,6 +610,9 @@ function App() {
           </motion.div>
         </div>
       </section>
+
+      {/* Tech Stack Marquee */}
+      <TechMarquee />
 
       {/* About Section */}
       <section
