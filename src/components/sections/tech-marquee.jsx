@@ -206,14 +206,17 @@ const TECHNOLOGIES = [
 
 function TechItem({ name, color, Icon }) {
   return (
-    <div className="group mx-4 flex min-w-[60px] flex-col items-center transition-all duration-300 md:mx-8 md:min-w-[80px] md:hover:scale-110">
-      <div className="mb-3 flex h-12 items-center justify-center md:h-16">
+    <div className="group mx-5 flex min-w-[64px] flex-col items-center transition-all duration-300 sm:mx-6 md:mx-8 md:min-w-[80px] md:hover:scale-110">
+      <div className="mb-2 flex h-12 items-center justify-center md:mb-3 md:h-16">
+        {/* Mobile (no hover): coloured + full opacity. Desktop: grey at rest,
+            colourised on hover. */}
         <Icon
           draggable={false}
-          className={`pointer-events-none h-9 w-9 opacity-70 drop-shadow-lg grayscale filter transition-all duration-500 md:h-12 md:w-12 md:group-hover:opacity-100 md:group-hover:grayscale-0 ${color}`}
+          className={`pointer-events-none h-10 w-10 opacity-100 drop-shadow-lg filter transition-all duration-500 grayscale-0 md:h-12 md:w-12 md:opacity-70 md:grayscale md:group-hover:opacity-100 md:group-hover:grayscale-0 ${color}`}
         />
       </div>
-      <span className="translate-y-2 text-xs font-medium text-zinc-500 opacity-0 transition-all duration-300 md:text-sm md:group-hover:translate-y-0 md:group-hover:text-foreground md:group-hover:opacity-100">
+      {/* Mobile: label always visible. Desktop: reveal on hover. */}
+      <span className="text-center text-xs font-medium text-foreground transition-all duration-300 md:translate-y-2 md:text-sm md:text-zinc-500 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:text-foreground md:group-hover:opacity-100">
         {name}
       </span>
     </div>
@@ -352,8 +355,8 @@ export function TechMarquee() {
       </motion.div>
 
       {/* edge fades */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-background to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-background to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-background to-transparent md:w-24" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-background to-transparent md:w-24" />
 
       <div className="mask-gradient w-full overflow-hidden py-4">
         <div
