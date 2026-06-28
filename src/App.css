@@ -38,6 +38,11 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-body);
+  /* Trava qualquer deslocamento lateral da viewport (gesto diagonal no mobile
+     não deve "desenquadrar" a tela nem criar barra/scroll horizontal). */
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+  width: 100%;
 }
 
 /* Brand type roles */
@@ -276,6 +281,8 @@ body {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
 }
 
 /* Melhorias de acessibilidade */

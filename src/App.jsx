@@ -126,7 +126,7 @@ function App() {
 
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen overflow-x-clip bg-background text-foreground">
       {/* Header */}
       <motion.header
         className="fixed top-0 w-full bg-card/80 backdrop-blur-md border-b border-border z-50"
